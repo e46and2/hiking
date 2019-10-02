@@ -26,4 +26,9 @@ list_states = {}
 list_states
 end
 
+def self.list_hikes_and_trails
+
+end
+
+
 end
