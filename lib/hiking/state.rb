@@ -19,10 +19,6 @@ def self.all
 @@all
 end
 
-def self.add_state_info(state_info)
-  @@all << state_info
-end
-
 def self.list_states
 list_states = {}
   @@all.each do |list|
