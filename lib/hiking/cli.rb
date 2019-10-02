@@ -28,6 +28,7 @@ attr_reader :state, :trails
       puts "What state would you like to hike in?"
       puts "Enter the state number and press the return key,"
       puts "or type '000' and press the return key to quit the program:"
+      puts "                                                                   "
       input = gets.chomp.to_i
       case input
       when 1..51
@@ -37,13 +38,17 @@ attr_reader :state, :trails
       when 000
       goodbye
       else
+      puts "                                                                   "
       puts "Your entry wasn't valid. Please try again."
+      puts "                                                                   "
       end
     end
   end
 
   def goodbye
+    puts "                                                                   "
     puts "Enjoy your hike!"
+    puts "                                                                   "
   end
 
   def scrape_states
@@ -68,16 +73,21 @@ attr_reader :state, :trails
   end
 
   def list_trails
+    puts "                                                                   "
     @trails = Hiking::Trails.list_trails
     puts "Featured Trails"
+    puts "                                                                   "
     @trails.each do |trail|
       puts "#{trail}"
+      puts "                                                                   "
     end
   end
 
   def sub_menu
+    puts "                                                                   "
     puts "Would you like more information about hiking trails in this state?"
-    puts "Enter 1 for more information, or 2 to return to the main menu"
+    puts "Enter 1 to see a list of featured trails, or 2 to return to the main menu"
+    puts "                                                                   "
     response = gets.chomp.to_i
     case response
     when 1
@@ -85,7 +95,9 @@ attr_reader :state, :trails
     when 2
       list_states
     else
+      puts "                                                                   "
       puts "Your entry wasn't valid. Please try again."
+      puts "                                                                   "
       end
     end
 end
