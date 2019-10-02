@@ -2,11 +2,13 @@
 #require 'require_all'
 #require_all 'lib'
 require "bundler/setup"
-require './lib/hiking'
+require "./lib/hiking/version.rb"
+require "./lib/hiking/cli.rb"
+require "./lib/hiking/state.rb"
 #require 'open-uri'
 #require 'nokogiri'
 #puts "Does this work?!"
 
-CLI.new.call
+Hiking::CLI.new.call
 
 #Hiking::Scraper.new.scrape

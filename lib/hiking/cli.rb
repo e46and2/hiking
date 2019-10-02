@@ -1,19 +1,27 @@
-class CLI
+require_relative "scraper.rb"
 
-attr_reader :states, :state_list, :state_card
+class Hiking::CLI
+
+attr_accessor :scrape
+attr_reader :state
 
   def call
+    puts "--------------------------------"
     puts "Find Hiking Trails in Your State"
+    puts "--------------------------------"
+    puts "Take a look at the list below to find the number for your selection"
+    puts "                                                                   "
     #list_states
     #state_abbrv
-    #Hiking::Scraper.scrape
+    scrape_states
+    list_states
     menu
   end
 
   def menu
     input = nil
     while input != "exit"
-      puts "What state do you want to hike in? Enter the number:"
+      puts "What state would you like to hike in? Enter the state number here:"
       input = gets.strip
       case input
       when "1"
@@ -32,13 +40,15 @@ attr_reader :states, :state_list, :state_card
     puts "Enjoy your hike!"
   end
 
-  def list_states
-    @state_card = Scraper.all.states
-    #puts state_list
+  def scrape_states
+    @scrape = Hiking::Scraper.scrape
   end
 
-def state_abbrv
- puts "AL"
-end
+  def list_states
+    @state = Hiking::State.list_states
+    @state.each do |k,v|
+      puts "#{k}. #{v}"
+    end
+  end
 
 end
