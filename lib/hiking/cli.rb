@@ -9,7 +9,10 @@ attr_reader :state
     puts "--------------------------------"
     puts "Find Hiking Trails in Your State"
     puts "--------------------------------"
+    puts "                                                                   "
     puts "Take a look at the list below to find the number for your selection"
+    puts "                                                                   "
+    puts "To exit, type 'exit' and press the return key"
     puts "                                                                   "
     #list_states
     #state_abbrv
@@ -21,7 +24,10 @@ attr_reader :state
   def menu
     input = nil
     while input != "exit"
-      puts "What state would you like to hike in? Enter the state number here:"
+      puts "                                                                   "
+      puts "What state would you like to hike in?"
+      puts "Enter the state number and press the return key," 
+      puts "or type 'exit' and press the return key to quit the program:"
       input = gets.strip
       case input
       when "1"
