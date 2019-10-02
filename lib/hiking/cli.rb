@@ -2,7 +2,7 @@ require_relative "scraper.rb"
 
 class Hiking::CLI
 
-attr_accessor :scrape
+attr_accessor :scrape, :input
 attr_reader :state
 
   def call
@@ -12,29 +12,27 @@ attr_reader :state
     puts "                                                                   "
     puts "Take a look at the list below to find the number for your selection"
     puts "                                                                   "
-    puts "To exit, type 'exit' and press the return key"
+    puts "To exit, type '000' and press the return key"
     puts "                                                                   "
-    #list_states
-    #state_abbrv
+    
     scrape_states
     list_states
     menu
   end
 
   def menu
+    @input = input
     input = nil
-    while input != "exit"
+    while input != 000
       puts "                                                                   "
       puts "What state would you like to hike in?"
       puts "Enter the state number and press the return key,"
-      puts "or type 'exit' and press the return key to quit the program:"
-      input = gets.strip
+      puts "or type '000' and press the return key to quit the program:"
+      input = gets.chomp.to_i
       case input
-      when "1"
-      list_states
-      when "Matches"
-      state_abbrv
-      when "exit"
+      when 1..51
+      state_info(input)
+      when 000
       goodbye
       else
       puts "Your entry wasn't valid. Please try again."
@@ -53,8 +51,27 @@ attr_reader :state
   def list_states
     @state = Hiking::State.list_states
     @state.each do |k,v|
-      puts "#{k}. #{v}"
+      puts "#{k} - #{v}"
     end
   end
+
+  def state_info(input)
+    puts "                                                                   "
+    @state = Hiking::State.list_hikes_and_trails(input)
+    puts "                                                                   "
+    puts "Would you like more information about hiking trails in this state?"
+    puts "Enter 1 for more information, or 2 to return to the main menu"
+    response = gets.chomp.to_i
+    case response
+    when 1
+      puts "Here is more information"
+    when 2
+      list_states
+      menu
+    else
+      puts "Your entry wasn't valid. Please try again."
+      end
+    end
+
 
 end

@@ -1,6 +1,7 @@
 class Hiking::State
 
 attr_accessor :state_name, :total_featured_hikes, :total_trails, :url, :number
+attr_reader :input
 
   @@all = []
 
@@ -26,8 +27,9 @@ list_states = {}
 list_states
 end
 
-def self.list_hikes_and_trails
-
+def self.list_hikes_and_trails(input)
+    info = @@all.detect{|n| n.number == input}
+    puts "#{info.state_name} has #{info.total_featured_hikes} and a total of #{info.total_trails}"
 end
 
 
