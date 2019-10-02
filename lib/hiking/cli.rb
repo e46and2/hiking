@@ -26,7 +26,7 @@ attr_reader :state
     while input != "exit"
       puts "                                                                   "
       puts "What state would you like to hike in?"
-      puts "Enter the state number and press the return key," 
+      puts "Enter the state number and press the return key,"
       puts "or type 'exit' and press the return key to quit the program:"
       input = gets.strip
       case input

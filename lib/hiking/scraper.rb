@@ -3,7 +3,7 @@ require 'nokogiri'
 
 class Hiking::Scraper
 
-attr_accessor :number, :state_name, :state_card, :page, :total_featured_hikes, :total_trails, :url, :scrape
+attr_accessor :state_card, :page
 
 def self.scrape
 @page = Nokogiri::HTML(open("https://www.hikingproject.com/directory/areas"))
@@ -20,6 +20,11 @@ total_trails = info.css("div.card-block.area-info").css("p").text.split("Hikes")
 url = info.css("a").attribute("href").value
 state_info = Hiking::State.new(number, state_name, total_featured_hikes, total_trails, url)
 end
+end
+
+def self.scrape_trails
+
+
 end
 
 

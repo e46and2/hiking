@@ -1,7 +1,6 @@
 class Hiking::State
 
 attr_accessor :state_name, :total_featured_hikes, :total_trails, :url, :number
-attr_reader :state_info
 
   @@all = []
 
