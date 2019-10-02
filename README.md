@@ -1,8 +1,6 @@
 # Hiking
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/hiking`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+This program lists featured hikes by state, scraped from the website Hiking Project.
 
 ## Installation
 
@@ -22,7 +20,7 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+cd into the project directory with Terminal and run ruby ./bin/hiking_trails 
 
 ## Development
 
