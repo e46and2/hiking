@@ -12,7 +12,6 @@ def initialize(number=nil, state_name=nil, total_featured_hikes=nil, total_trail
   @total_trails = total_trails
   @url = url
   @@all << self
-  @@all
 end
 
 def self.all

@@ -4,6 +4,7 @@ require 'nokogiri'
 class Hiking::Scraper
 
 attr_accessor :state_card, :page
+attr_reader :input
 
 def self.scrape
 @page = Nokogiri::HTML(open("https://www.hikingproject.com/directory/areas"))
@@ -22,10 +23,17 @@ state_info = Hiking::State.new(number, state_name, total_featured_hikes, total_t
 end
 end
 
-def self.scrape_trails
+def self.scrape_trails(input)
+  info = Hiking::State.all.detect{|n| n.number == input}
+  url = info.url
 
+  @page = Nokogiri::HTML(open(url))
+  @state_trails = @page.css("div.card-body")
 
+  @state_trails.each_with_index do |info|
+  trail_name = info.css("h4.card-title.text-black.text-truncate").text
+  featured_trails = Hiking::Trails.new(trail_name)
+  end
 end
-
 
 end

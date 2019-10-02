@@ -3,7 +3,7 @@ require_relative "scraper.rb"
 class Hiking::CLI
 
 attr_accessor :scrape, :input
-attr_reader :state
+attr_reader :state, :trails
 
   def call
     puts "--------------------------------"
@@ -14,7 +14,7 @@ attr_reader :state
     puts "                                                                   "
     puts "To exit, type '000' and press the return key"
     puts "                                                                   "
-    
+
     scrape_states
     list_states
     menu
@@ -32,6 +32,8 @@ attr_reader :state
       case input
       when 1..51
       state_info(input)
+      scrape_trails(input)
+      sub_menu
       when 000
       goodbye
       else
@@ -59,19 +61,31 @@ attr_reader :state
     puts "                                                                   "
     @state = Hiking::State.list_hikes_and_trails(input)
     puts "                                                                   "
+  end
+
+  def scrape_trails(input)
+    @trails = Hiking::Scraper.scrape_trails(input)
+  end
+
+  def list_trails
+    @trails = Hiking::Trails.list_trails
+    puts "Featured Trails"
+    @trails.each do |trail|
+      puts "#{trail}"
+    end
+  end
+
+  def sub_menu
     puts "Would you like more information about hiking trails in this state?"
     puts "Enter 1 for more information, or 2 to return to the main menu"
     response = gets.chomp.to_i
     case response
     when 1
-      puts "Here is more information"
+      list_trails
     when 2
       list_states
-      menu
     else
       puts "Your entry wasn't valid. Please try again."
       end
     end
-
-
 end

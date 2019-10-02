@@ -1,12 +1,26 @@
 class Hiking::Trails
 
-attr_reader :featured_hikes, :gems, :state
+attr_accessor :trail_name
+attr_reader :state
 
-def initialize
-  @state = state 
-  @featured_hikes = featured_hikes
-  @gems = gems
+
+@@all = []
+
+def initialize(trail_name=nil)
+  @trail_name = trail_name
+  @@all << self
 end
 
+def self.all
+  @@all
+end
+
+def self.list_trails
+  trail_list = []
+  @@all.each do |list|
+    trail_list<< list.trail_name
+  end
+trail_list
+end
 
 end

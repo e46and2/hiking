@@ -5,6 +5,7 @@ require "bundler/setup"
 require "./lib/hiking/version.rb"
 require "./lib/hiking/cli.rb"
 require "./lib/hiking/state.rb"
+require "./lib/hiking/trails.rb"
 #require 'open-uri'
 #require 'nokogiri'
 #puts "Does this work?!"
