@@ -30,9 +30,11 @@ def self.scrape_trails(input)
   @page = Nokogiri::HTML(open(url))
   @state_trails = @page.css("div.card-body")
 
-  @state_trails.each_with_index do |info|
+  @state_trails.each do |info|
+  #number = i + 1
   trail_name = info.css("h4.card-title.text-black.text-truncate").text
-  featured_trails = Hiking::Trails.new(trail_name)
+  distance = info.css("p.card-text.technical-details.pull-xs-right.small.text-black.text-truncate").text.gsub("\n  ","").split("mi")[0]
+  featured_trails = Hiking::Trails.new(trail_name, distance)
   end
 end
 
