@@ -4,4 +4,4 @@ source "https://rubygems.org"
 gemspec
 
 gem 'require_all'
-gem 'nokogiri', '~> 1.10', '>= 1.10.4'
+gem 'nokogiri', '~> 1.11'
